@@ -1,6 +1,6 @@
 # Text Analyzer Tool
 
-A project that solves a specific problem to demonstrate some analysis on particular texts. **This project uses a [boilerplate/starter project](https://github.com/hagopj13/node-express-boilerplate) for quickly building RESTful APIs using Node.js, Express, and Mongoose.**
+A project that can read, write, update, and delete texts from/to the database and demonstrate some analysis on particular texts. **This project uses a [boilerplate/starter project](https://github.com/hagopj13/node-express-boilerplate) for quickly building RESTful APIs using Node.js, Express, and Mongoose.**
 
 ## Manual Installation
 
