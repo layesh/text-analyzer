@@ -8,8 +8,8 @@ const router = express.Router();
 
 router
   .route('/')
-  .post(auth('manageTexts'), validate(textValidation.createText), textController.createText)
-  .get(auth('getTexts'), validate(textValidation.getTexts), textController.getTexts);
+  .post(validate(textValidation.createText), textController.createText)
+  .get(validate(textValidation.getTexts), textController.getTexts);
 
 router
   .route('/:textId')
