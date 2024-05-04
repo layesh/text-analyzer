@@ -8,8 +8,8 @@ components:
         value:
           type: string
       example:
-        id: 1
         value: The quick brown fox jumps over the lazy dog. The lazy dog slept in the sun.
+        id: 6635db181862d143c4949c1a
 
     User:
       type: object

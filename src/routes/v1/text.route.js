@@ -157,10 +157,10 @@ module.exports = router;
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         _id: id
+ *         name: id
  *         required: true
  *         schema:
- *           type: ObjectId
+ *           type: string
  *         description: Text id
  *     requestBody:
  *       required: true
@@ -195,10 +195,10 @@ module.exports = router;
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         _id: id
+ *         name: id
  *         required: true
  *         schema:
- *           type: ObjectId
+ *           type: string
  *         description: Text id
  *     responses:
  *       "200":

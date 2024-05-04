@@ -24,7 +24,7 @@ const getText = {
 
 const updateText = {
   params: Joi.object().keys({
-    id: Joi.required().custom(objectId),
+    textId: Joi.required().custom(objectId),
   }),
   body: Joi.object()
     .keys({
@@ -35,7 +35,7 @@ const updateText = {
 
 const deleteText = {
   params: Joi.object().keys({
-    id: Joi.string().custom(objectId),
+    textId: Joi.string().custom(objectId),
   }),
 };
 
