@@ -58,6 +58,20 @@ components:
         message:
           type: string
 
+    NumberOfWordsInText:
+      type: object
+      properties:
+        id:
+          type: string
+        value:
+          type: string
+        numberOfWords:
+          type: number
+      example:
+        value: The quick brown fox jumps over the lazy dog. The lazy dog slept in the sun.
+        id: 6635db181862d143c4949c1a
+        numberOfWords: 16
+
   responses:
     DuplicateEmail:
       description: Email already taken

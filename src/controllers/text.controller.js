@@ -34,10 +34,24 @@ const deleteText = catchAsync(async (req, res) => {
   res.status(httpStatus.NO_CONTENT).send();
 });
 
+const getNumberOfWordsInText = catchAsync(async (req, res) => {
+  const text = await textService.getTextById(req.params.textId);
+  if (!text) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Text not found');
+  }
+  var wordCount = (text.value).split(' ').length;
+  const numberOfWordsInText = {};
+  numberOfWordsInText.value = text.value;
+  numberOfWordsInText.id = text.id;
+  numberOfWordsInText.numberOfWords = wordCount;
+  res.send(numberOfWordsInText);
+});
+
 module.exports = {
   createText,
   getTexts,
   getText,
   updateText,
   deleteText,
+  getNumberOfWordsInText,
 };

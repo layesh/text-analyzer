@@ -17,6 +17,10 @@ router
   .patch(auth('manageTexts'), validate(textValidation.updateText), textController.updateText)
   .delete(auth('manageTexts'), validate(textValidation.deleteText), textController.deleteText);
 
+router
+  .route('/numberOfWords/:textId')
+  .get(auth('analyzeTexts'), validate(textValidation.getText), textController.getNumberOfWordsInText)
+
 module.exports = router;
 
 /**
@@ -210,3 +214,34 @@ module.exports = router;
  *       "404":
  *         $ref: '#/components/responses/NotFound'
  */
+
+ /**
+  * @swagger
+  * /texts/numberOfWords/{id}:
+  *   get:
+  *     summary: Get number of words in a text
+  *     description: Fetch a particular text by id. Then it count total words in that text.
+  *     tags: [Texts]
+  *     security:
+  *       - bearerAuth: []
+  *     parameters:
+  *       - in: path
+  *         name: id
+  *         required: true
+  *         schema:
+  *           type: string
+  *         description: Text id
+  *     responses:
+  *       "200":
+  *         description: OK
+  *         content:
+  *           application/json:
+  *             schema:
+  *                $ref: '#/components/schemas/NumberOfWordsInText'
+  *       "401":
+  *         $ref: '#/components/responses/Unauthorized'
+  *       "403":
+  *         $ref: '#/components/responses/Forbidden'
+  *       "404":
+  *         $ref: '#/components/responses/NotFound'
+  */
