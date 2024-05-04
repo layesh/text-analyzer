@@ -66,12 +66,6 @@ module.exports = router;
  *     tags: [Texts]
  *     security:
  *       - bearerAuth: []
- *     parameters:
- *       - in: query
- *         value: value
- *         schema:
- *           type: string
- *         description: Text value *
  *     responses:
  *       "200":
  *         description: OK

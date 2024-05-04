@@ -9,8 +9,8 @@ const createText = {
 
 const getTexts = {
   query: Joi.object().keys({
-    name: Joi.string(),
-    role: Joi.string(),
+    id: Joi.string(),
+    value: Joi.string(),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
     page: Joi.number().integer(),
