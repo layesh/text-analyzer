@@ -47,7 +47,7 @@ module.exports = router;
  *               value:
  *                 type: string *
  *             example:
- *               value: This is a sample text!
+ *               value: The quick brown fox jumps over the lazy dog. The lazy dog slept in the sun.
  *     responses:
  *       "201":
  *         description: Text Created
