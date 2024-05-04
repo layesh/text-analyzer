@@ -19,7 +19,7 @@ const getTexts = {
 
 const getText = {
   params: Joi.object().keys({
-    id: Joi.string().custom(objectId),
+    textId: Joi.string().custom(objectId),
   }),
 };
 

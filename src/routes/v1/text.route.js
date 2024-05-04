@@ -13,7 +13,7 @@ router
 
 router
   .route('/:textId')
-  .get(auth('getTexts'), validate(textValidation.getText), textController.getText)
+  .get(validate(textValidation.getText), textController.getText)
   .patch(auth('manageTexts'), validate(textValidation.updateText), textController.updateText)
   .delete(auth('manageTexts'), validate(textValidation.deleteText), textController.deleteText);
 
@@ -31,7 +31,6 @@ module.exports = router;
  * /texts:
  *   post:
  *     summary: Create a text
- *     description: Only admins can create other texts.
  *     tags: [Texts]
  *     security:
  *       - bearerAuth: []
@@ -62,7 +61,6 @@ module.exports = router;
  *
  *   get:
  *     summary: Get all texts
- *     description: Only admins can retrieve all texts.
  *     tags: [Texts]
  *     security:
  *       - bearerAuth: []
@@ -107,10 +105,10 @@ module.exports = router;
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         _id: id
+ *         name: id
  *         required: true
  *         schema:
- *           type: ObjectId
+ *           type: string
  *         description: Text id
  *     responses:
  *       "200":
