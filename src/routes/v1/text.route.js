@@ -8,12 +8,12 @@ const router = express.Router();
 
 router
   .route('/')
-  .post(validate(textValidation.createText), textController.createText)
-  .get(validate(textValidation.getTexts), textController.getTexts);
+  .post(auth('manageTexts'), validate(textValidation.createText), textController.createText)
+  .get(auth('getTexts'), validate(textValidation.getTexts), textController.getTexts);
 
 router
   .route('/:textId')
-  .get(validate(textValidation.getText), textController.getText)
+  .get(auth('getTexts'), validate(textValidation.getText), textController.getText)
   .patch(auth('manageTexts'), validate(textValidation.updateText), textController.updateText)
   .delete(auth('manageTexts'), validate(textValidation.deleteText), textController.deleteText);
 
@@ -64,6 +64,31 @@ module.exports = router;
  *     tags: [Texts]
  *     security:
  *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: value
+ *         schema:
+ *           type: string
+ *         description: Text Value
+ *       - in: query
+ *         name: sortBy
+ *         schema:
+ *           type: string
+ *         description: sort by query in the form of field:desc/asc (ex. value:asc)
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         default: 10
+ *         description: Maximum number of users
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *         description: Page number
  *     responses:
  *       "200":
  *         description: OK

@@ -9,7 +9,6 @@ const createText = {
 
 const getTexts = {
   query: Joi.object().keys({
-    id: Joi.string(),
     value: Joi.string(),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
