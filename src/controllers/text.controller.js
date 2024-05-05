@@ -86,6 +86,23 @@ const getNumberOfParagraphsInText = catchAsync(async (req, res) => {
   res.send(numberOfParagraphsInText);
 });
 
+const getLongestWordInParagraphs = catchAsync(async (req, res) => {
+  const text = await textService.getTextById(req.params.textId);
+  if (!text) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Text not found');
+  }
+  var ignorePunctuationText = text.value.replace(/[.?,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+  var splitText = ignorePunctuationText.trim().split(/\s+/);
+  var longestWord = splitText.sort(function(a, b) {
+    return b.length - a.length;
+  });
+  const longestWordInParagraphs = {};
+  longestWordInParagraphs.value = text.value;
+  longestWordInParagraphs.id = text.id;
+  longestWordInParagraphs.longestWordInParagraphs = longestWord[0].length;
+  res.send(longestWordInParagraphs);
+});
+
 module.exports = {
   createText,
   getTexts,
@@ -96,4 +113,5 @@ module.exports = {
   getNumberOfCharsInText,
   getNumberOfSentencesInText,
   getNumberOfParagraphsInText,
+  getLongestWordInParagraphs,
 };
