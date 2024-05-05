@@ -60,6 +60,19 @@ const getNumberOfCharsInText = catchAsync(async (req, res) => {
   res.send(numberOfCharsInText);
 });
 
+const getNumberOfSentencesInText = catchAsync(async (req, res) => {
+  const text = await textService.getTextById(req.params.textId);
+  if (!text) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Text not found');
+  }
+  var sentenceCount = (text.value).split(/[.?!]/g).filter(Boolean).length;
+  const numberOfSentencesInText = {};
+  numberOfSentencesInText.value = text.value;
+  numberOfSentencesInText.id = text.id;
+  numberOfSentencesInText.numberOfSentences = sentenceCount;
+  res.send(numberOfSentencesInText);
+});
+
 module.exports = {
   createText,
   getTexts,
@@ -68,4 +81,5 @@ module.exports = {
   deleteText,
   getNumberOfWordsInText,
   getNumberOfCharsInText,
+  getNumberOfSentencesInText,
 };

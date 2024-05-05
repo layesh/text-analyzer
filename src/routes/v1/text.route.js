@@ -25,6 +25,10 @@ router
   .route('/numberOfChars/:textId')
   .get(auth('analyzeTexts'), validate(textValidation.getText), textController.getNumberOfCharsInText)
 
+router
+  .route('/numberOfSentences/:textId')
+  .get(auth('analyzeTexts'), validate(textValidation.getText), textController.getNumberOfSentencesInText)
+
 module.exports = router;
 
 /**
@@ -280,3 +284,34 @@ module.exports = router;
    *       "404":
    *         $ref: '#/components/responses/NotFound'
    */
+
+   /**
+    * @swagger
+    * /texts/numberOfSentences/{id}:
+    *   get:
+    *     summary: Get number of sentences in a text
+    *     description: Fetch a particular text by id. Then it counts total number of sentences in that text.
+    *     tags: [Texts]
+    *     security:
+    *       - bearerAuth: []
+    *     parameters:
+    *       - in: path
+    *         name: id
+    *         required: true
+    *         schema:
+    *           type: string
+    *         description: Text id
+    *     responses:
+    *       "200":
+    *         description: OK
+    *         content:
+    *           application/json:
+    *             schema:
+    *                $ref: '#/components/schemas/NumberOfSentencesInText'
+    *       "401":
+    *         $ref: '#/components/responses/Unauthorized'
+    *       "403":
+    *         $ref: '#/components/responses/Forbidden'
+    *       "404":
+    *         $ref: '#/components/responses/NotFound'
+    */
