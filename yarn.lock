@@ -2590,6 +2590,11 @@ expect@^26.6.2:
     jest-message-util "^26.6.2"
     jest-regex-util "^26.0.0"
 
+express-cache-headers@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/express-cache-headers/-/express-cache-headers-0.1.4.tgz#097a7073a15d3e62d590b81a380e7457e0f6dacc"
+  integrity sha512-dBYkl2mtb9slDlBIdCL2r8ORSUlhLs/o47498eCwx+s/z0fSfTdHWWo1Y1AyMDSzaw5LlYoGgggRYbT4GLdVPw==
+
 express-mongo-sanitize@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/express-mongo-sanitize/-/express-mongo-sanitize-2.1.0.tgz#a8c647787c25ded6e97b5e864d113e7687c5d471"
