@@ -32,9 +32,13 @@ cp .env.example .env
 
 Running locally:
 
+Download and install MongoDB if already not installed. Then run the following command in the project directory.
+
 ```bash
 yarn dev
 ```
+
+After running the command you can go to `http://localhost:3000/v1/docs` to check the api documentation.
 
 Testing:
 
