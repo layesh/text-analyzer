@@ -29,6 +29,10 @@ router
   .route('/numberOfSentences/:textId')
   .get(auth('analyzeTexts'), validate(textValidation.getText), textController.getNumberOfSentencesInText)
 
+router
+  .route('/numberOfParagraphs/:textId')
+  .get(auth('analyzeTexts'), validate(textValidation.getText), textController.getNumberOfParagraphsInText)
+
 module.exports = router;
 
 /**
@@ -308,6 +312,37 @@ module.exports = router;
     *           application/json:
     *             schema:
     *                $ref: '#/components/schemas/NumberOfSentencesInText'
+    *       "401":
+    *         $ref: '#/components/responses/Unauthorized'
+    *       "403":
+    *         $ref: '#/components/responses/Forbidden'
+    *       "404":
+    *         $ref: '#/components/responses/NotFound'
+    */
+
+   /**
+    * @swagger
+    * /texts/numberOfParagraphs/{id}:
+    *   get:
+    *     summary: Get number of paragraphs in a text
+    *     description: Fetch a particular text by id. Then it counts total number of paragraphs in that text.
+    *     tags: [Texts]
+    *     security:
+    *       - bearerAuth: []
+    *     parameters:
+    *       - in: path
+    *         name: id
+    *         required: true
+    *         schema:
+    *           type: string
+    *         description: Text id
+    *     responses:
+    *       "200":
+    *         description: OK
+    *         content:
+    *           application/json:
+    *             schema:
+    *                $ref: '#/components/schemas/NumberOfParagraphsInText'
     *       "401":
     *         $ref: '#/components/responses/Unauthorized'
     *       "403":

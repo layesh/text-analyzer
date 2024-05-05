@@ -100,6 +100,20 @@ components:
         id: 6635db181862d143c4949c1a
         numberOfSentences: 2
 
+    NumberOfParagraphsInText:
+      type: object
+      properties:
+        id:
+          type: string
+        value:
+          type: string
+        numberOfWords:
+          type: number
+      example:
+        value: The quick brown fox jumps over the lazy dog. The lazy dog slept in the sun.
+        id: 6635db181862d143c4949c1a
+        numberOfParagraphs: 1
+
   responses:
     DuplicateEmail:
       description: Email already taken
