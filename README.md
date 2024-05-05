@@ -40,19 +40,6 @@ yarn dev
 
 After running the command you can go to `http://localhost:3000/v1/docs` to check the api documentation.
 
-Testing:
-
-```bash
-# run all tests
-yarn test
-
-# run all tests in watch mode
-yarn test:watch
-
-# run test coverage
-yarn coverage
-```
-
 Docker:
 
 ```bash
@@ -118,6 +105,8 @@ List of available routes:
 **Auth routes**:\
 `POST /v1/auth/register` - register\
 `POST /v1/auth/login` - login\
+`POST /v1/auth/logout` - logout\
+`POST /v1/auth/refresh-tokens` - refresh auth tokens
 
 **Text routes**:\
 `POST /v1/users` - create a user\
