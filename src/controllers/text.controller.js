@@ -39,7 +39,7 @@ const getNumberOfWordsInText = catchAsync(async (req, res) => {
   if (!text) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Text not found');
   }
-  var wordCount = (text.value).split(' ').length;
+  var wordCount = (text.value.trim()).split(/\s+/).length;
   const numberOfWordsInText = {};
   numberOfWordsInText.value = text.value;
   numberOfWordsInText.id = text.id;
