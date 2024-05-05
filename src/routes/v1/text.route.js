@@ -21,6 +21,10 @@ router
   .route('/numberOfWords/:textId')
   .get(auth('analyzeTexts'), validate(textValidation.getText), textController.getNumberOfWordsInText)
 
+router
+  .route('/numberOfChars/:textId')
+  .get(auth('analyzeTexts'), validate(textValidation.getText), textController.getNumberOfCharsInText)
+
 module.exports = router;
 
 /**
@@ -220,7 +224,7 @@ module.exports = router;
   * /texts/numberOfWords/{id}:
   *   get:
   *     summary: Get number of words in a text
-  *     description: Fetch a particular text by id. Then it count total words in that text.
+  *     description: Fetch a particular text by id. Then it counts total words in that text.
   *     tags: [Texts]
   *     security:
   *       - bearerAuth: []
@@ -245,3 +249,34 @@ module.exports = router;
   *       "404":
   *         $ref: '#/components/responses/NotFound'
   */
+
+  /**
+   * @swagger
+   * /texts/numberOfChars/{id}:
+   *   get:
+   *     summary: Get number of characters in a text
+   *     description: Fetch a particular text by id. Then it counts total non-whitespace characters in that text.
+   *     tags: [Texts]
+   *     security:
+   *       - bearerAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: string
+   *         description: Text id
+   *     responses:
+   *       "200":
+   *         description: OK
+   *         content:
+   *           application/json:
+   *             schema:
+   *                $ref: '#/components/schemas/NumberOfCharsInText'
+   *       "401":
+   *         $ref: '#/components/responses/Unauthorized'
+   *       "403":
+   *         $ref: '#/components/responses/Forbidden'
+   *       "404":
+   *         $ref: '#/components/responses/NotFound'
+   */
