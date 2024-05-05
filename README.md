@@ -108,7 +108,19 @@ List of available routes:
 `POST /v1/auth/logout` - logout\
 `POST /v1/auth/refresh-tokens` - refresh auth tokens
 
-**Text routes**:\
+**Texts routes**:\
+`POST /v1/texts` - create a text\
+`GET /v1/texts` - get all texts\
+`GET /v1/texts/:textId` - get text\
+`PATCH /v1/texts/:textId` - update text\
+`DELETE /v1/texts/:textId` - delete text\
+`GET /v1/texts/numberOfWords/:textId` - get number of words in a text\
+`GET /v1/texts/numberOfChars/:textId` - get number of characters in a text\
+`GET /v1/texts/numberOfSentences/:textId` - get number of sentences in a text\
+`GET /v1/texts/numberOfParagraphs/:textId` - get number of paragraphs in a text\
+`GET /v1/texts/longestWordInParagraphs/:textId` - get the longest word in paragraphs
+
+**Users routes**:\
 `POST /v1/users` - create a user\
 `GET /v1/users` - get all users\
 `GET /v1/users/:userId` - get user\
