@@ -33,6 +33,10 @@ router
   .route('/numberOfParagraphs/:textId')
   .get(auth('analyzeTexts'), validate(textValidation.getText), textController.getNumberOfParagraphsInText)
 
+router
+  .route('/longestWordInParagraphs/:textId')
+  .get(auth('analyzeTexts'), validate(textValidation.getText), textController.getLongestWordInParagraphs)
+
 module.exports = router;
 
 /**
@@ -350,3 +354,34 @@ module.exports = router;
     *       "404":
     *         $ref: '#/components/responses/NotFound'
     */
+
+    /**
+     * @swagger
+     * /texts/longestWordInParagraphs/{id}:
+     *   get:
+     *     summary: Get longest word in paragraphs
+     *     description: Fetch a particular text by id. Then it returns longest word in the paragraphs.
+     *     tags: [Texts]
+     *     security:
+     *       - bearerAuth: []
+     *     parameters:
+     *       - in: path
+     *         name: id
+     *         required: true
+     *         schema:
+     *           type: string
+     *         description: Text id
+     *     responses:
+     *       "200":
+     *         description: OK
+     *         content:
+     *           application/json:
+     *             schema:
+     *                $ref: '#/components/schemas/LongestWordInParagraphs'
+     *       "401":
+     *         $ref: '#/components/responses/Unauthorized'
+     *       "403":
+     *         $ref: '#/components/responses/Forbidden'
+     *       "404":
+     *         $ref: '#/components/responses/NotFound'
+     */
